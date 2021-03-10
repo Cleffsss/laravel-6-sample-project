@@ -13,8 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    {{ __('You are logged in!') }}
+                    <a href="/questionnaires/create" class="btn btn-light">Create a new Survey</a>
                 </div>
             </div>
         </div>
