@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Questionnaire extends Model
+class Question extends Model
 {
     use HasFactory;
     protected $guarded = [];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+    public function questionaire()
 
-    public function questions()
     {
-        return $this->hasMany(Question::class);
+        return $this->belongsTo(Questionnaire::class);
+    }
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
     }
 }
