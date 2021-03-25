@@ -1,45 +1,49 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Create new Survey') }}</div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">{{ __('Create new Survey') }}</div>
 
-                    <div class="card-body">
-                        <form action="/questionnaires" method="POST">
+          <div class="card-body">
+            <form action="/questionnaires" method="POST">
 
-                            @csrf
+              @csrf
 
-                            <div class="form-group">
-                                <label for="title">Title</label>
-                                <input name="title" type="text" class="form-control" id="title" aria-describedby="titleHelp" placeholder="Enter a Title">
-                                <small id="titlelHelp" class="form-text text-muted">Give your survey a meaninful title.</small>
-                            </div>
+              <div class="form-group">
+                <label for="title">Title</label>
+                <input name="title" type="text" class="form-control" id="title" value="{{ old('title') }}"
+                  aria-describedby="titleHelp" placeholder="Enter a Title">
+                <small id="titlelHelp" class="form-text text-muted">Give your survey a meaninful
+                  title.</small>
+              </div>
 
-                            @error('title')
-                            <small class="text-danger"> {{ $message }} </small>
-                                
-                            @enderror
+              @error('title')
+                <small class="text-danger"> {{ $message }} </small>
 
-                            <div class="form-group">
-                                <label for="purpose">Purpose</label>
-                                <input name="purpose" type="text" class="form-control" id="purpose" aria-describedby="purposeHelp" placeholder="Enter a purpose">
-                                <small id="purposelHelp" class="form-text text-muted">Give your survey a meaningful purpose.</small>
+              @enderror
 
-                                @error('purpose')
-                            <small class="text-danger"> {{ $message }} </small>
-                                
-                            @enderror
-                            </div>
+              <div class="form-group">
+                <label for="purpose">Purpose</label>
+                <input name="purpose" type="text" class="form-control" id="purpose" value="{{ old('purpose') }}"
+                  aria-describedby="purposeHelp" placeholder="Enter a purpose">
+                <small id="purposelHelp" class="form-text text-muted">Give your survey a meaningful
+                  purpose.</small>
 
-                            <button type="submit" class="btn btn-primary">Create Survey</button>
-                            
-                        </form>
-                    </div>
-                </div>
-            </div>
+                @error('purpose')
+                  <small class="text-danger"> {{ $message }} </small>
+
+                @enderror
+              </div>
+
+              <button type="submit" class="btn btn-primary">Create Survey</button>
+
+            </form>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 @endsection

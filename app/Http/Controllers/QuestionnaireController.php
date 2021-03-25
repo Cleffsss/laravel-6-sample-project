@@ -5,37 +5,39 @@ namespace App\Http\Controllers;
 use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 use App\Models\Questionnaire;
+use App\Http\Controllers\Controller;
 
 
 
 class QuestionnaireController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-        
-    }
-    
-    public function create()
-    {
-        return view('questionnaire.create');
-    }
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
 
-    public function store()
-    {
-        $data = request()->validate([
-            'title' => 'required',
-            'purpose' => 'required',
-        ]);
+  public function create()
+  {
+    return view('questionnaire.create');
+  }
 
-        $questionnaire = auth()->user()->questionnaires()->create($data);
+  public function store()
+  {
+    $data = request()->validate([
+      'title' => 'required',
+      'purpose' => 'required',
+    ]);
 
-        return redirect('/questionnaires/' . $questionnaire->id);
-    }
+    $questionnaire = auth()->user()->questionnaires()->create($data);
 
-    public function show(Questionnaire $questionnaire)
-    {
-        return view('questionnaire.show', compact('questionnaire'));
-    }
+    return redirect('/questionnaires/' . $questionnaire->id);
+  }
+
+  public function show(Questionnaire $questionnaire)
+  {
+    $questionnaire->load('questions.answers');
+
+    return view('questionnaire.show', compact('questionnaire'));
+  }
 }

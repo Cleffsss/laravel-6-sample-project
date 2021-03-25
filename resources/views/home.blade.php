@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a href="/questionnaires/create" class="btn btn-light">Create a new Survey</a>
+                    <a href="/questionnaires/create" class="btn btn-dark">Create a new Survey</a>
                 </div>
             </div>
         </div>

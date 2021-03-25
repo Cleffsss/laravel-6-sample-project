@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Questionnaire;
+use App\Http\Controllers\Controller;
 
 class QuestionController extends Controller
 {
@@ -32,7 +33,7 @@ class QuestionController extends Controller
 
     $question = $questionnaire->questions()->create($data['question']);
     $question ->answers()->createMany($data['answers']);
-    
-    return redirect('/questionnaire/'.$questionnaire->id);
+
+    return redirect('/questionnaires/'.$questionnaire->id);
   }
 }
